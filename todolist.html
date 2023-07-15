@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        input[type="text"] {
+            width: 70%;
+            border: 3px solid black;
+        }
+
+        .task {
+            margin-bottom: 10px;
+        }
+
+        .remove {
+            background-color: red;
+            color: white;
+            padding: 6px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+
+    </style>
+</head>
+<body class="bg-green-300">
+
+    <div class="container w-64 m-auto mt-3 grid content-center border-4 border-black-400 relative top-20 bg-gray-400 font-sans place-content-center" >
+    <h1 class="font-bold text-xl text-center pt-2 text-white">To-Do List</h1>
+    
+    <input type="text" id="task" placeholder="Enter Your Task" class="font-bold text-white place-self-center mt-6 text-center"><br><br>
+
+    <button onclick="addTask()" class="bg-green-400 p-2 rounded-md">Click to Add Your Task</button><br>
+    
+    <div id="taskList" class="p-5 font-sans font-bold"></div>
+</div>
+    <script>
+        var taskList = document.getElementById('taskList');
+
+        function addTask() {
+            var userInput = document.getElementById('task').value;
+
+            // Create a new task element
+            var newTask = document.createElement("div");
+            newTask.textContent = userInput;
+            newTask.classList.add("task");
+            newTask.classList.add("text-center")
+
+            // Create a remove button element
+            var removeButton = document.createElement("span");
+            removeButton.textContent = "✓";
+            removeButton.classList.add("remove");
+            removeButton.classList.add("m-2")
+            removeButton.onclick = function() {
+                removeTask(newTask);
+            };
+
+            // Append the new task and remove button to the task list
+            newTask.appendChild(removeButton);
+            taskList.appendChild(newTask);
+
+            // Clear the input field
+            document.getElementById('task').value = "";
+        }
+
+        function removeTask(taskElement) {
+            taskList.removeChild(taskElement);
+        }
+    </script>
+</body>
+</html>
