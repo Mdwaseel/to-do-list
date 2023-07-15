@@ -1,4 +1,3 @@
-# to-do-list
 # To-Do List Web Application
 
 This repository contains a simple To-Do List web application implemented in HTML and JavaScript.
